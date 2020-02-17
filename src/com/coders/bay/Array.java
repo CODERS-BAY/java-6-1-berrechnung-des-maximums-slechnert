@@ -3,13 +3,15 @@ package com.coders.bay;
 import java.util.Arrays;
 import java.util.Scanner;
 
+import static java.lang.Integer.MIN_VALUE;
+
 public class Array {
     public static void main(String[] args) {
 
         String num;
 
         Scanner sc = new Scanner(System.in);
-        int p;
+
         int result;
         int[] zahlen = new int[0];
 
@@ -25,7 +27,7 @@ public class Array {
                 result = Integer.parseInt(num);
                 int[] zahlenNeu = new int[i + 1];
 
-                for (p = 0; p < i; p++) {
+                for (int p = 0; p < i; p++) {
                     zahlenNeu[p] = zahlen[p];
                 }
                 zahlenNeu[i] = result;
@@ -36,12 +38,17 @@ public class Array {
 
         System.out.println(Arrays.toString(zahlen));
 
-        int k;
-        int maximumContainer = 0;
+        int maximumContainer = MIN_VALUE;
 
-        for (k = 0; k < zahlen.length; k++) {
+        /*for (int k = 0; k < zahlen.length; k++) {
             if (zahlen[k] >= maximumContainer) {
                 maximumContainer = zahlen[k];
+            }
+        }*/
+
+        for (int k : zahlen) {
+            if (k > maximumContainer) {
+                maximumContainer = k;
             }
         }
         System.out.println("Maximum ist: " + maximumContainer);
